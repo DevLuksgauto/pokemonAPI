@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Pokemon from './Pokemon';
 
-import styles from './App.module.css';
 
 function App(props) {
   const [list, setList] = useState([]);
@@ -17,7 +16,7 @@ function App(props) {
 
   return (
     <Fragment>
-      <h1 className={styles.app}>Lista de Pokemons</h1>
+      <h1>Lista de Pokemons</h1>
       {list.map(item => {
     return (<Pokemon key={item.name} data={item}/>)})}
     </Fragment>
