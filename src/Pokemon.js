@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
+import style from './App.module.css'
 
 
 const Pokemon = ( {data} ) => {
@@ -10,7 +11,7 @@ const Pokemon = ( {data} ) => {
     useEffect(()=> {
       axios.get(data.url)
       .then((res) => setDetails(res.data))
-      .catch((error) => console.log("Error 2"))
+      .catch(() => console.log("Error to load details"))
     },[])
   
     if (details === null){
@@ -21,8 +22,10 @@ const Pokemon = ( {data} ) => {
   
     return (
       <Fragment>
-        <img src={details.sprites.front_default} alt="Figura do Pokémon"/>
-        <h2>Name</h2><p>{details.name} - {details.base_experience}</p><hr></hr>
+        <div className={style.pokemon}>
+          <img src={details.sprites.front_default} alt="Figura do Pokémon" width="200px"/>
+          <p>{details.name} - {details.base_experience}</p>
+        </div>
       </Fragment>
     )
   }
